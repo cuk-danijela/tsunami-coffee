@@ -73,23 +73,23 @@
               </li>
               <li class="list-unstyled-item list-hours-item d-flex">
                 Tuesday
-                <span class="ml-auto">7:00 AM to 9:00 PM</span>
+                <span class="ml-auto">7:00 AM to 11:00 PM</span>
               </li>
               <li class="list-unstyled-item list-hours-item d-flex">
                 Wednesday
-                <span class="ml-auto">7:00 AM to 9:00 PM</span>
+                <span class="ml-auto">7:00 AM to 11:00 PM</span>
               </li>
               <li class="list-unstyled-item list-hours-item d-flex">
                 Thursday
-                <span class="ml-auto">7:00 AM to 9:00 PM</span>
+                <span class="ml-auto">7:00 AM to 11:00 PM</span>
               </li>
               <li class="list-unstyled-item list-hours-item d-flex">
                 Friday
-                <span class="ml-auto">9:00 AM to 2:00 PM</span>
+                <span class="ml-auto">9:00 AM to 11:00 PM</span>
               </li>
               <li class="list-unstyled-item list-hours-item d-flex">
                 Saturday
-                <span class="ml-auto">9:00 AM to 2:00 PM</span>
+                <span class="ml-auto">9:00 AM to 11:00 PM</span>
               </li>
               <li class="list-unstyled-item list-hours-item d-flex">
                 Sunday
@@ -131,7 +131,7 @@
 <script>
 
   var dateToCheck = new Date();
-
+  var hourToCheck = dateToCheck.getHours();
   var weekday = new Array(7);
   weekday[0] = "Sunday";
   weekday[1] = "Monday";
@@ -142,6 +142,15 @@
   weekday[6] = "Saturday";
 
   var dayToCheck = weekday[dateToCheck.getDay()];
+
+  if (hourToCheck > 7 && hourToCheck < 23) {
+    console.log(hourToCheck);
+    $('.list-hours li').eq(0).addClass('today');
+  }
+  else {
+    $('.list-hours li').eq(0).addClass('closed');
+  }
+
 
   if (dayToCheck == 'Sunday' || dayToCheck == 'Monday') {
     console.log(dayToCheck);
